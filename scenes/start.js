@@ -403,6 +403,53 @@ gameStart.create = function () {
     }, this);
 };
 
+gameStart.update = function () {
+    if (cursors.left.isDown) {
+        player.setVelocityX(-160);
+        player.anims.play('left', true);
+    }
+    else if (cursors.right.isDown) {
+        player.setVelocityX(160);
+        player.anims.play('right', true);
+    }
+    else {
+        player.setVelocityX(0);
+        player.anims.play('turn', true);
+    }
+    if (cursors.up.isDown && player.body.touching.down) {
+        player.setVelocityY(-360);
+    }
+    if (over){
+        over   = false;
+        score  = 0;score2 = 0;score3 = 0;score4 = 0;score5 = 0;
+        this.scene.start('gameOver');
+    }
+    if(cacador2.x <= 2100){
+        cacador2.setVelocityX(50);
+        cacador2.anims.play('direita',true);
+    }
+    if(cacador2.x >= 2600){
+        cacador2.setVelocityX(-50);
+        cacador2.anims.play('esquerda',true);
+    }
+    if(cacador3.x <= 4850){
+        cacador3.setVelocityX(50);
+        cacador3.anims.play('direita',true);
+    }
+    if(cacador3.x >= 5250){
+        cacador3.setVelocityX(-50);
+        cacador3.anims.play('esquerda',true);
+    }
+    if(cacador4.x <= 5650){
+        cacador4.setVelocityX(50);
+        cacador4.anims.play('direita',true);
+    }
+    if(cacador4.x >= 6450){
+        cacador4.setVelocityX(-50);
+        cacador4.anims.play('esquerda',true);
+    }
+
+};
 function collectStar(player, spo) {
     spo.disableBody(true, true);
     //console.log(spo.texture.key)
